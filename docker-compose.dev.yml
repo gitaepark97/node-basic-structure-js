@@ -1,0 +1,17 @@
+services:
+  api:
+    env_file:
+      - .env.dev
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+    command: 'npm run development'
+  socket:
+    env_file:
+      - .env.dev
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+    command: 'npm run development'
