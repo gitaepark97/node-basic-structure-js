@@ -3,7 +3,7 @@
 const { Kafka, CompressionTypes } = require('kafkajs');
 const { config } = require('../config');
 const { InternalServerError } = require('../exceptions/InternalServer.exception');
-const { responseSocketInterceptor } = require('../middlewares/response.interceptor');
+const { responseKafkaInterceptor } = require('../middlewares/response.interceptor');
 const { logger } = require('../utils/logger.util');
 
 class KafkaLoader {
@@ -67,7 +67,7 @@ class KafkaLoader {
           const user_id = Buffer.from(message.key).toString();
           const memos = JSON.parse(message.value);
 
-          io.to(user_id).emit('CREATE_MEMO', responseSocketInterceptor(user_id, { memos }));
+          io.to(user_id).emit('CREATE_MEMO', responseKafkaInterceptor(user_id, { memos }));
         },
       });
     } catch (err) {

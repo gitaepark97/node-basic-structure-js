@@ -1,6 +1,0 @@
-{
-  "watch": ["./src"],
-  "ext": "js",
-  "ingore": ["./test/*"],
-  "exec": "node src/api.worker.js --watch"
-}
