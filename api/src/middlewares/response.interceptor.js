@@ -4,7 +4,7 @@ const { Request } = require('express');
 const { logger } = require('../utils/logger.util');
 
 /**
- * local, development 시 response logging
+ * development 시 response logging
  * @param {Request} req
  * @param {any} result
  * @returns {any}
